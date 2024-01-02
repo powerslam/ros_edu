@@ -12,15 +12,16 @@ class ClassExample():
         self.rate = rospy.Rate(10)
 
     def func(self) -> None:
-        while not rospy.is_shutdown():
-            self.int_msg.data += 1
-            self.pub.publish(self.int_msg)
-            self.rate.sleep()
+        self.int_msg.data += 1
+        self.pub.publish(self.int_msg)
+        self.rate.sleep()
+            
 
 if __name__ == '__main__':
     try:
         obj = ClassExample()
-        obj.func()
+        while not rospy.is_shutdown():
+            obj.func()
     
     except rospy.ROSInterruptException:
         pass
