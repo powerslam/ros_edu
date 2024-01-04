@@ -18,9 +18,7 @@ class TurtlePub():
 if __name__ == '__main__':
     try:
         obj = TurtlePub()
-        while not rospy.is_shutdown():
-            obj.func()
-            obj.rate.sleep()
+        rospy.spin()
     
     except rospy.ROSInterruptException:
         pass
